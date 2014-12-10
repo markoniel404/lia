@@ -15,10 +15,9 @@ inf = {
 	updateScrollInfo: function() {
 		this.contentHeight = $(document).height();
 		this.scrollPosition = $(document).scrollTop();
-		console.log(this.contentHeight + " : " + this.scrollPosition);
 	},
 	isNearBottom: function() {
-		return (this.contentHeight - this.scrollPosition) < 2000;
+		return (this.contentHeight - this.scrollPosition) < 3000;
 	},
 	getNextUrl: function() {
 		if (!this.nextUrl) {
@@ -42,7 +41,7 @@ inf = {
 			this.loading = true;
 			this.getNextPage(this.getNextUrl(), function(context) {
 				if (context.content) {
-					$('.linear-message-list.message-list').append($('.linear-message-list.message-list', context.content));	
+					$('.linear-message-list.message-list').append($('.linear-message-list.message-list', context.content).html());	
 					context.updateScrollInfo();
 					context.loading = false;
 				}
